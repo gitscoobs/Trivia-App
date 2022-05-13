@@ -1,20 +1,20 @@
-//Call will load when window is opened
+
 
 
 // function to fetch data from the api
 fetch(`https://opentdb.com/api.php?amount=5`) 
 .then(response => response.json())
 .then(data => addQuestions(data))
-// .then(data => console.log(data.results[0].incorrect_answers[2]))
+
 
 
 function addQuestions(data){
     console.log(data)
-    // // LOOP OVER THE QUESTIONS
-    // console.log(data.results.length)
-    // console.log(data.results)
+   
+   
+    // the value of i goes up by 1 each time it iterates until it reaches the last question
     for(let i = 0; i < data.results.length;  i++){
-      // CONSOLE LOG THE QUESTION
+      //the value of i is chaning by 1 each time so it will start at 0 and go to 5 to grab each part of the array 
       console.log(data.results[i].correct_answer)
       console.log(data.results[i].question)
       console.log(' ')
@@ -30,7 +30,7 @@ function addQuestions(data){
 
 
 
-// 
+
 
 
 
