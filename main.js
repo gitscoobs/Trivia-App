@@ -1,5 +1,15 @@
+const startButton = document.getElementById('start-btn')
+const questionContainerElement = document.getElementById('question-container')
 
 
+startButton.addEventListener('click' , startGame)
+
+function startGame() {
+  console.log('started')
+  startButton.classList.add('hide')
+  questionContainerElement.classList.remove('hide')
+  
+}
 
 // function to fetch data from the api
 fetch(`https://opentdb.com/api.php?amount=5`) 
@@ -7,25 +17,29 @@ fetch(`https://opentdb.com/api.php?amount=5`)
 .then(data => addQuestions(data))
 
 
-
 function addQuestions(data){
-    console.log(data)
-   
-   
-    // the value of i goes up by 1 each time it iterates until it reaches the last question
-    for(let i = 0; i < data.results.length;  i++){
-      //the value of i is chaning by 1 each time so it will start at 0 and go to 5 to grab each part of the array 
-      console.log(data.results[i].correct_answer)
-      console.log(data.results[i].question)
-      console.log(' ')
+    
+  for(let i = 0; i < data.results.length;  i++){
+    var corAnswer = data.results[i].correct_answer
+    var question = data.results[i].question
 
-      // create new div
-      // add question text
-      // add choices
-      // add correct answer
-      // add all this to html
+    const questionElement = document.createElement("div");
+    questionElement.innerHTML = question;
+    document.getElementById("questionDiv").appendChild(questionElement);
 
-    }
+    const corAnswerElement = document.createElement("div");
+    corAnswerElement.innerHTML = corAnswer;
+    document.getElementById("corDiv").appendChild(corAnswerElement);
+
+      for(let j = 0; j < data.results[i].incorrect_answers.length;  j++){
+        var incAnswer = data.results[i].incorrect_answers[j]
+
+          const incAnswerElement = document.createElement("div");
+          incAnswerElement.innerHTML = incAnswer;
+          document.getElementById("incDiv").appendChild(incAnswerElement);
+          
+        }
+  }
 }
 
 
@@ -37,57 +51,4 @@ function addQuestions(data){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var o = 'Olivia'
-
-// let car = {
-//   make: 'toyota',
-//   year: 2016,
-//   owners: ['Nick', 'Tyler', o],
-//   mods: {
-//     tint: true,
-//     wheels: "yellow"
-//   },
-//   makeAndYear : function(){
-//     return this.year + " " + this.make
-//   }
-// }
-
-
-// console.log(car.makeAndYear())
-
-// // console.log(car.owners)
-// console.log(car.make)
-// console.log(car.mods.tint)
-
-
-
-// // Write an object of an animal
-// // properities of: name, type, siblings names
-// let animal = {
-//   name: 'zorb',
-//   type: 'cat',
-//   siblingsNames: ['zore' , 'zord']
-// }
-
-// console.log(animal)
-// console.log(animal.siblingsNames[1])
-  
-
-  
-  
+ 
