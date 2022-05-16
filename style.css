@@ -3,6 +3,10 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
 }
+img {
+    width: 100%;
+    height: auto;
+  }
 
 body{
     padding: 0;
@@ -12,9 +16,6 @@ body{
     align-items: center;
     color: #704E2E;
     background-image: url("images/1426875.jpg");
-    
-
-    
 }
 
 .quiz-title {
