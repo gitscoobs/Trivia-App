@@ -1,5 +1,5 @@
 const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('question-container')
+const questionContainerElement = document.getElementById('quiz-container')
 
 startButton.addEventListener('click' , startGame)
 
@@ -19,19 +19,53 @@ fetch(`https://opentdb.com/api.php?amount=5&type=multiple`)
 function addQuestions(data){
     
   for(let i = 0; i < data.results.length;  i++){
-    var corAnswer = data.results[i].correct_answer
-    var question = data.results[i].question
+    // var corAnswerText = data.results[i].correct_answer
+    
+    // ALL QUESTIONS
+    let allAnswers = data.results[i].incorrect_answers
+    allAnswers.push(data.results[i].correct_answer)
 
-    const questionElement = document.createElement('div');
-    questionElement.innerHTML = question;
-    document.getElementById("questionDiv").appendChild(questionElement);
+    // Creates container
+    var containerElement = document.createElement("div")
+    containerElement.classList.add("question-container")
 
-    // const corAnswerElement = document.createElement('button');
-    // corAnswerElement.innerHTML = corAnswer;
-    //  document.getElementById("corDiv").appendChild(corAnswerElement);
+    // Create P tag and set inner text to question
+    var questionElement = document.createElement("p")
+    var questionText = data.results[i].question
+    questionElement.innerHTML = questionText
+    containerElement.append(questionElement)
 
-      for(let j = 0; j < data.results[i].incorrect_answers.length;  j++){
-        var incAnswer = data.results[i].incorrect_answers[j]
+    // Create Button container
+    var buttonContainerElement = document.createElement("div")
+    buttonContainerElement.classList.add("btn-grid")
+
+    var corAnswerText = data.results[i].correct_answer
+
+    for(let j = 0; j < allAnswers.length;  j++){
+      var answerElement = document.createElement('button')
+      var answerText = data.results[i].incorrect_answers[j]
+      answerElement.innerHTML = answerText
+      if(answerText === corAnswerText){
+        answerElement.classList.add("correct-answer")
+      }
+      // APEND ELMENT TO BUTTON CONTAINER
+      buttonContainerElement.append(answerElement)
+    }
+    containerElement.append(buttonContainerElement)
+    document.getElementById('quiz-container').append(containerElement)
+  }
+}
+
+
+      //   <div class="question-container">
+      //   <p class="question"></p>
+      //     <div class="btn-grid">
+      //       <button  class="btn">1</button>
+      //       <button  class="btn">2</button>
+      //       <button  class="btn">3</button>
+      //       <button  class="btn">4</button>
+      //     </div>
+      // </div>
 
         //Attempt at shuffling answers together 
         // var incAnswerButton = data.results[i].incorrect_answers[j]
@@ -60,11 +94,3 @@ function addQuestions(data){
 
         // let merged = [...corAnswer, ...incAnswer];
         // console.log(merged);
-
-        
-
-      
-
-        }
-    }
-}

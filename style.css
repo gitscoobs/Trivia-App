@@ -26,6 +26,7 @@ body{
 }
 
 .flex-container {
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,6 +36,7 @@ body{
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+    /* height: 100vh; */
 }
 
 .btn-grid {
@@ -72,4 +74,9 @@ body{
 
 .hide {
     display: none;
+}
+
+.question-container {
+    padding-bottom: 40px;
+    
 }
