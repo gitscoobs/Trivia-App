@@ -1,5 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
 }
 
 body{
@@ -8,21 +10,34 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #704E2E;
+    background-image: url("images/1426875.jpg");
+    
+
     
 }
 
+.quiz-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
 .flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width:800px;
     max-width: 80%;
-    background-color: #484349;
+    background-color: #709176;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
 }
 
 .btn-grid {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
@@ -33,7 +48,7 @@ body{
     background-color: #F7F0F0;
     border-radius: 5px;
     padding: 5px 10px;
-    color: blue;
+    color: #704E2E;
     outline: none;
 }
 
